@@ -6,22 +6,32 @@ public class MovementManager : MonoBehaviour
 {
     #region Serialize fields
     [SerializeField]
-    private float max_speed;
+    private float speed = 20;
     [SerializeField]
-    private float horizontal_accel;
+    private float rotationSpeed = 25;
+
     [SerializeField]
-    private float vertical_accel;
+    private float maxSpeed = 50;
     #endregion
 
-    // Start is called before the first frame update
+    private Rigidbody body;
+
+    private float horizontalAccel = 0;
+    private float horizontalVelocity = 0;
+
+    private float verticalAccel = 0;
+    private float verticalVelocity = 0;
+
     void Start()
     {
-
+        body = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position += Vector3.forward*Time.deltaTime;
+        verticalAccel = Input.GetAxis("Vertical");
+        horizontalAccel = Input.GetAxis("Horizontal");
+        body.velocity = (transform.forward * verticalAccel) * speed * Time.fixedDeltaTime;
+        transform.Rotate((transform.up * horizontalAccel) * rotationSpeed * Time.fixedDeltaTime);
     }
 }
