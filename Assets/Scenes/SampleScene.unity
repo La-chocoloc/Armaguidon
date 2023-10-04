@@ -387,12 +387,6 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 9f182d095da24204a8f5d26b40de8cb9, type: 3}
   - {fileID: 919132149155446097, guid: 3917ab4884b24f043a3b0e47b52f43b3, type: 3}
   - {fileID: 919132149155446097, guid: adaa7946ebd0342459bffd8d89e6410e, type: 3}
-  - {fileID: 919132149155446097, guid: 2def6ab244f00ed43b35b1afec5acfe7, type: 3}
-  - {fileID: 919132149155446097, guid: 1d5ef65cd3d2f4047981daf5a279a80b, type: 3}
-  - {fileID: 919132149155446097, guid: 5a0d669e696ac93408b0c57f84785f41, type: 3}
-  - {fileID: 919132149155446097, guid: 60f7e7e7630838546a12343775f092dc, type: 3}
-  - {fileID: 919132149155446097, guid: c003f9b9dde3f9f4e8e9a08608d14595, type: 3}
-  - {fileID: 919132149155446097, guid: 8e375bae087421f48b10352e0a2d23a6, type: 3}
   cityObject: {fileID: 2147153672}
   mapWidth: 50
   mapHeight: 50
