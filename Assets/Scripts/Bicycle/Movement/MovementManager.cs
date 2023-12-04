@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,14 +7,15 @@ public class MovementManager : MonoBehaviour
 {
     #region Serialize fields
     [SerializeField]
-    private float speed = 20;
-    [SerializeField] private float rotationSpeed = 25;
+    private float speed = 200;
+    [SerializeField] private float rotationSpeed = 150;
 
-    [SerializeField] private float maxSpeed = 50;
     [SerializeField][Range(-40f, 40f)] private float angle = 0;
 
     [SerializeField] GameObject frontTyre;    
     [SerializeField] GameObject rearTyre;
+    [SerializeField] Transform frontTyreTransform;    
+    [SerializeField] Transform rearTyreTransform;
     [SerializeField] GameObject handleBar;
     [SerializeField] GameObject pivotDirection;
     #endregion
@@ -21,10 +23,8 @@ public class MovementManager : MonoBehaviour
     private Rigidbody body;
 
     private float horizontalAccel = 0;
-    private float horizontalVelocity = 0;
 
     private float verticalAccel = 0;
-    private float verticalVelocity = 0;
 
     void Start()
     {
@@ -45,18 +45,16 @@ public class MovementManager : MonoBehaviour
     {
         verticalAccel = Input.GetAxis("Vertical");
         horizontalAccel = Input.GetAxis("Horizontal");
-        body.velocity = transform.forward * verticalAccel * speed * Time.fixedDeltaTime;
-        transform.Rotate(transform.up * horizontalAccel * rotationSpeed * Time.fixedDeltaTime);
+        body.velocity = handleBar.transform.forward * verticalAccel * speed * Time.fixedDeltaTime;
 
         if (verticalAccel != 0)
         {
-            frontTyre.transform.Rotate(new Vector3(0, 0, verticalAccel));
-            rearTyre.transform.Rotate(new Vector3(0, 0, verticalAccel));
+            frontTyre.transform.Rotate(new Vector3(verticalAccel, 0, 0));
+            rearTyre.transform.Rotate(new Vector3(verticalAccel, 0, 0));
         }
 
         MoveHandleBar();
     }
-
     void MoveHandleBar()
     {
         handleBar.transform.rotation = Quaternion.Euler(0, 180, 0);
