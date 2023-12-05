@@ -17,7 +17,6 @@ public class MovementManager : MonoBehaviour
     [SerializeField] Transform frontTyreTransform;    
     [SerializeField] Transform rearTyreTransform;
     [SerializeField] GameObject handleBar;
-    [SerializeField] GameObject pivotDirection;
     #endregion
 
     private Rigidbody body;
@@ -31,21 +30,12 @@ public class MovementManager : MonoBehaviour
         body = GetComponent<Rigidbody>();
     }
 
-    private void OnValidate()
-    {
-        MoveHandleBar();
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(handleBar.transform.position, pivotDirection.transform.position);
-    }
-
     void FixedUpdate()
     {
         verticalAccel = Input.GetAxis("Vertical");
         horizontalAccel = Input.GetAxis("Horizontal");
         body.velocity = handleBar.transform.forward * verticalAccel * speed * Time.fixedDeltaTime;
+        body.AddForce(new Vector3(0, -980f, 0));
 
         if (verticalAccel != 0)
         {
@@ -57,7 +47,6 @@ public class MovementManager : MonoBehaviour
     }
     void MoveHandleBar()
     {
-        handleBar.transform.rotation = Quaternion.Euler(0, 180, 0);
-        handleBar.transform.Rotate(pivotDirection.transform.position - handleBar.transform.position, angle, Space.World);
+        handleBar.transform.Rotate(new Vector3(0, horizontalAccel, 0));
     }
 }
