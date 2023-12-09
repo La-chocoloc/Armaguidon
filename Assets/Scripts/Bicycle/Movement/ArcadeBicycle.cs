@@ -27,6 +27,7 @@ public class ArcadeBicycle : MonoBehaviour
     float currentWheelAngle = 0;
     float currentBicycleAngle = 0;
 
+    bool boosted = false;
     bool dead = false;
 
     // Start is called before the first frame update
@@ -84,6 +85,9 @@ public class ArcadeBicycle : MonoBehaviour
 
         bicycleVisuals.transform.localRotation = Quaternion.Euler(0, 0, -currentBicycleAngle);
         handleBar.transform.localRotation = Quaternion.Euler(0,currentWheelAngle,0);
+
+
+
         transform.rotation = Quaternion.Euler(
             transform.rotation.eulerAngles + new Vector3(
                 0,
@@ -102,7 +106,14 @@ public class ArcadeBicycle : MonoBehaviour
         }
         if (collision.gameObject.tag == "Boost")
         {
-            maxSpeed = 0.5f;
+            setBoost(true);
+        }
+        if (collision.gameObject.tag == "Terrain")
+        {
+            if (boosted)
+            {
+                setBoost(false);
+            }
         }
     }
 
@@ -125,6 +136,19 @@ public class ArcadeBicycle : MonoBehaviour
             childRb.useGravity = true;
             childRb.isKinematic = false;
             childRb.AddForce(new Vector3(randX, randY, randZ).normalized * 1000f);
+        }
+    }
+
+    void setBoost(bool isBoosted)
+    {
+        boosted = isBoosted;
+        if(isBoosted)
+        {
+            maxSpeed *= 2.5f;
+        }
+        else
+        {
+            maxSpeed *= 0.4f;
         }
     }
 }

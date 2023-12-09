@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ennemy
   - Boost
+  - Terrain
   layers:
   - Default
   - TransparentFX
