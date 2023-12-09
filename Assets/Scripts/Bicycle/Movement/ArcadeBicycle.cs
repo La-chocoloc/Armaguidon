@@ -59,7 +59,11 @@ public class ArcadeBicycle : MonoBehaviour
         );
 
         // Use of deltaTime so bicycle's velocity changes are smooth
-        currentVelocity = Mathf.Clamp(currentVelocity * 0.8f + currentAccel * maxSpeed * Time.fixedDeltaTime, -maxSpeed, maxSpeed);
+        currentVelocity = Mathf.Clamp(
+            currentVelocity * 0.8f + currentAccel * maxSpeed * Time.fixedDeltaTime, 
+            -maxSpeed, 
+            maxSpeed
+        );
 
         // Add force to move forward
         transform.position = rb.position;
@@ -91,10 +95,14 @@ public class ArcadeBicycle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ennemy")
+        if (collision.gameObject.tag == "Ennemy")
         {
             Debug.Log("Should explode");
             Explode();
+        }
+        if (collision.gameObject.tag == "Boost")
+        {
+            maxSpeed = 0.5f;
         }
     }
 

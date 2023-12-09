@@ -180,12 +180,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8327414485640665456}
+  - component: {fileID: 3770440018415895711}
   - component: {fileID: 2751401309463066115}
   - component: {fileID: 2425713692724909788}
-  - component: {fileID: 3770440018415895711}
   m_Layer: 0
   m_Name: ArcadeBicycle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -207,6 +207,26 @@ Transform:
   - {fileID: 7687157665175606075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3770440018415895711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519143092423700519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781b9563b5d667946bfe4e5d852b14e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handleBar: {fileID: 6854131303311735774}
+  bicycleVisuals: {fileID: 536899882729545966}
+  maxWheelTurningAngle: 30
+  wheelTurningSpeed: 15
+  maxBicycleTurningAngle: 30
+  bicycleTurningSpeed: 10
+  accelForce: 10
+  maxSpeed: 0.2
 --- !u!54 &2751401309463066115
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -255,26 +275,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.11821866, y: 0.9904604, z: 1.7423288}
   m_Center: {x: -0.013847232, y: 0.4870804, z: 0.08880633}
---- !u!114 &3770440018415895711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2519143092423700519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 781b9563b5d667946bfe4e5d852b14e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handleBar: {fileID: 6854131303311735774}
-  bicycleVisuals: {fileID: 536899882729545966}
-  maxWheelTurningAngle: 30
-  wheelTurningSpeed: 15
-  maxBicycleTurningAngle: 30
-  bicycleTurningSpeed: 10
-  accelForce: 10
-  maxSpeed: 0.5
 --- !u!1 &3140435673693684770
 GameObject:
   m_ObjectHideFlags: 0
