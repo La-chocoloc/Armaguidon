@@ -42,21 +42,6 @@ public class ArcadeBicycle : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Vector3 centerOfMass = GetComponent<BoxCollider>().center;
-        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
-        foreach (Rigidbody childRb in bicycleVisuals.GetComponentsInChildren<Rigidbody>())
-        {
-            childRb.centerOfMass = transform.position - childRb.transform.position + centerOfMass;
-        }
-        Gizmos.DrawSphere(transform.position + GetComponent<Rigidbody>().centerOfMass, 0.1f);
-        foreach (Rigidbody childRb in bicycleVisuals.GetComponentsInChildren<Rigidbody>())
-        {
-            Gizmos.DrawSphere(childRb.transform.position + childRb.centerOfMass, 0.1f);
-        }
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -77,6 +62,8 @@ public class ArcadeBicycle : MonoBehaviour
         currentVelocity = Mathf.Clamp(currentVelocity * 0.8f + currentAccel * maxSpeed * Time.fixedDeltaTime, -maxSpeed, maxSpeed);
 
         // Add force to move forward
+        transform.position = rb.position;
+        bicycleVisuals.transform.position = rb.position;
         transform.position += transform.forward * currentVelocity;
 
         currentWheelAngle = Mathf.Clamp(
@@ -116,15 +103,20 @@ public class ArcadeBicycle : MonoBehaviour
         dead = true;
         GetComponent<BoxCollider>().enabled = false;
         rb.isKinematic = true;
+        foreach (TrailRenderer childTr in bicycleVisuals.GetComponentsInChildren<TrailRenderer>())
+        {
+            childTr.enabled = false;
+        }
         foreach (Rigidbody childRb in bicycleVisuals.GetComponentsInChildren<Rigidbody>())
         {
             float randX = Random.value - 0.5f;
             float randY = Random.value - 0.5f;
             float randZ = Random.value - 0.5f;
             childRb.GetComponent<Collider>().isTrigger = false;
+            childRb.centerOfMass = new Vector3();
             childRb.useGravity = true;
             childRb.isKinematic = false;
-            childRb.AddForce(new Vector3(randX, randY, randZ).normalized * 5000f);
+            childRb.AddForce(new Vector3(randX, randY, randZ).normalized * 1000f);
         }
     }
 }
