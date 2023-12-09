@@ -27,6 +27,8 @@ public class ArcadeBicycle : MonoBehaviour
     float currentWheelAngle = 0;
     float currentBicycleAngle = 0;
 
+    bool dead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,8 @@ public class ArcadeBicycle : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (dead)
+            return;
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
@@ -87,21 +91,18 @@ public class ArcadeBicycle : MonoBehaviour
 
     private void Explode()
     {
+        dead = true;
         GetComponent<BoxCollider>().enabled = false;
         rb.isKinematic = true;
-        for (int i = 0; i < bicycleVisuals.transform.childCount; i++)
+        foreach (Rigidbody childRb in bicycleVisuals.GetComponentsInChildren<Rigidbody>())
         {
-            Transform child = bicycleVisuals.transform.GetChild(i);
-            Rigidbody childRb;
-            if (!child.TryGetComponent<Rigidbody>(out childRb))
-                continue;
             float randX = Random.value - 0.5f;
             float randY = Random.value - 0.5f;
             float randZ = Random.value - 0.5f;
-            child.GetComponent<Collider>().isTrigger = false;
+            childRb.GetComponent<Collider>().isTrigger = false;
             childRb.useGravity = true;
             childRb.isKinematic = false;
-            childRb.AddForce(new Vector3(randX, randY, randZ).normalized * 500f);
+            childRb.AddForce(new Vector3(randX, randY, randZ).normalized * 1000f);
         }
     }
 }
