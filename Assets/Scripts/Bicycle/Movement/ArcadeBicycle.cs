@@ -34,6 +34,27 @@ public class ArcadeBicycle : MonoBehaviour
     {
         transform.rotation = Quaternion.identity;
         rb = GetComponent<Rigidbody>();
+        Vector3 centerOfMass = GetComponent<BoxCollider>().center;
+        rb.centerOfMass = centerOfMass;
+        foreach (Rigidbody childRb in bicycleVisuals.GetComponentsInChildren<Rigidbody>())
+        {
+            childRb.centerOfMass = transform.position - childRb.transform.position + centerOfMass;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector3 centerOfMass = GetComponent<BoxCollider>().center;
+        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
+        foreach (Rigidbody childRb in bicycleVisuals.GetComponentsInChildren<Rigidbody>())
+        {
+            childRb.centerOfMass = transform.position - childRb.transform.position + centerOfMass;
+        }
+        Gizmos.DrawSphere(transform.position + GetComponent<Rigidbody>().centerOfMass, 0.1f);
+        foreach (Rigidbody childRb in bicycleVisuals.GetComponentsInChildren<Rigidbody>())
+        {
+            Gizmos.DrawSphere(childRb.transform.position + childRb.centerOfMass, 0.1f);
+        }
     }
 
     // Update is called once per frame
@@ -41,6 +62,7 @@ public class ArcadeBicycle : MonoBehaviour
     {
         if (dead)
             return;
+
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
@@ -102,7 +124,7 @@ public class ArcadeBicycle : MonoBehaviour
             childRb.GetComponent<Collider>().isTrigger = false;
             childRb.useGravity = true;
             childRb.isKinematic = false;
-            childRb.AddForce(new Vector3(randX, randY, randZ).normalized * 1000f);
+            childRb.AddForce(new Vector3(randX, randY, randZ).normalized * 5000f);
         }
     }
 }
