@@ -11,10 +11,12 @@ public class Ennemy : MonoBehaviour
     private float currentAccel = 0;
     private float currentVelocity = 0;
 
+    private Rigidbody rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,8 @@ public class Ennemy : MonoBehaviour
             maxSpeed
         );
 
-        transform.position += transform.forward * currentVelocity;
+        rb.MovePosition(
+            rb.position + transform.forward * currentVelocity * Mathf.Clamp(Mathf.Sin(Time.time)+0.3f,0.4f, 1.2f));
 
         float angle = Vector3.SignedAngle(transform.forward, dir, Vector3.up);
 

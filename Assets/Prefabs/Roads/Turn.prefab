@@ -84,7 +84,7 @@ MonoBehaviour:
   - {fileID: 6549792253973922706}
   _nextRoads: []
   _previousRoad: {fileID: 0}
-  _boundingMesh: {fileID: 0}
+  _boundingMesh: {fileID: 2988424758719387921}
   topology: []
   _infiniteHeight: 1
   PieceTypeId: 0
@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3059196499846305099}
   - component: {fileID: 8049508066169956920}
+  - component: {fileID: 2988424758719387921}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -174,6 +175,14 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &2988424758719387921
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8901132557849720252}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &3377717692498419260
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -412,6 +412,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236356922198837771}
   - component: {fileID: 3866193424131162691}
+  - component: {fileID: 2399565422287793827}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -455,6 +456,14 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &2399565422287793827
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550669703354826661}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &7203519171039723118
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +606,7 @@ MonoBehaviour:
   - {fileID: 93425874732049788}
   _nextRoads: []
   _previousRoad: {fileID: 0}
-  _boundingMesh: {fileID: 0}
+  _boundingMesh: {fileID: 2399565422287793827}
   topology: []
   _infiniteHeight: 1
   PieceTypeId: 0
