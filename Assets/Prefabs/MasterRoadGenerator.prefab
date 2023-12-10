@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1471763466786166503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5423920292644950445}
+  - component: {fileID: 3401545119488660652}
+  m_Layer: 0
+  m_Name: MasterRoadGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5423920292644950445
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471763466786166503}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3401545119488660652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471763466786166503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0da8f0f4ad4a24ab205b7a2b821e98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _choiceEngineStepsPerFrame: 1
+  _choiceEngineCheckDepth: 5
+  _flippableRoadSectionChoices:
+  - {fileID: 6101860083479334024, guid: 546ec86c5d8910c43bc6fface2f4f695, type: 3}
+  - {fileID: 3684971878102696900, guid: 5078c9598ac77f342a67eb11e6dbc981, type: 3}
+  - {fileID: 492749157861349501, guid: 63a912d928e2be546ab76fb88ba07d1f, type: 3}
+  _notFlippableRoadSectionChoices:
+  - {fileID: 3684971878102696900, guid: cb7c62e75e7b5b649b0cf28e7ad427d2, type: 3}
+  - {fileID: -6685951054425364178, guid: 2926f5046dd55ad4aac2baa09a1ccd39, type: 3}
+  - {fileID: -4809164447392098823, guid: 9ba5bcd0ecf97b54da324c7be495d0e1, type: 3}
+  - {fileID: 3684971878102696900, guid: c502745a693a9f742891fcbd4fbb5257, type: 3}
+  - {fileID: 5432828085764799425, guid: 5b852c450d8acb04bae390f7d83b8a21, type: 3}
+  - {fileID: 3684971878102696900, guid: 9c4be83b7476eb547897dad9a007ec65, type: 3}
+  _roadSectionContainer: {fileID: 0}
+  _autoHorizontalFlipPieces: 0
+  placeAllPresetPiecesOnStart: 1
+  piecesToPlaceFirst: []
+  _targetRoadLength: 10
+  placeNextRoads:
+    m_PersistentCalls:
+      m_Calls: []
+  _timeBetweenPiecePlacing: 0.5
+  _maxTimeBetweenRemovingPieces: 0.5
