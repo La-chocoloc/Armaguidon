@@ -28,7 +28,7 @@ public class ArcadeBicycle : MonoBehaviour
     float currentBicycleAngle = 0;
 
     bool boosted = false;
-    bool dead = false;
+    public bool dead = false;
 
     // Start is called before the first frame update
     void Start()

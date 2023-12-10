@@ -24,6 +24,13 @@ public class Ennemy : MonoBehaviour
     {
         Vector3 dir = target.position - transform.position;
 
+        if(Vector3.Dot(dir, target.forward) > 0 && dir.magnitude > 10)
+        {
+            transform.position = target.position + target.forward * 60;
+            transform.LookAt(target.position);
+            return;
+        }
+
         currentAccel = accelForce * Mathf.Clamp(Vector3.Dot(dir,transform.forward),0.1f,1);
 
         currentVelocity = Mathf.Clamp(
@@ -33,7 +40,7 @@ public class Ennemy : MonoBehaviour
         );
 
         rb.MovePosition(
-            rb.position + transform.forward * currentVelocity * Mathf.Clamp(Mathf.Sin(Time.time)+0.3f,0.4f, 1.2f));
+            rb.position + transform.forward * currentVelocity * Mathf.Clamp(Mathf.Sin(Time.time)-0.5f,0.4f, 1f));
 
         float angle = Vector3.SignedAngle(transform.forward, dir, Vector3.up);
 
@@ -45,4 +52,7 @@ public class Ennemy : MonoBehaviour
             ) * Time.fixedDeltaTime
         );
     }
+
+
+    
 }
