@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5423920292644950445}
-  - component: {fileID: 3401545119488660652}
+  - component: {fileID: 78669997915598028}
   m_Layer: 0
   m_Name: MasterRoadGenerator
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3401545119488660652
+--- !u!114 &78669997915598028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,24 +41,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1471763466786166503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc0da8f0f4ad4a24ab205b7a2b821e98, type: 3}
+  m_Script: {fileID: 11500000, guid: cb9bd39d3e7b1f945a86e27c7cd38089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _choiceEngineStepsPerFrame: 1
+  _choiceEngineStepsPerFrame: 2
   _choiceEngineCheckDepth: 5
   _flippableRoadSectionChoices:
-  - {fileID: 6101860083479334024, guid: 546ec86c5d8910c43bc6fface2f4f695, type: 3}
-  - {fileID: 3684971878102696900, guid: 5078c9598ac77f342a67eb11e6dbc981, type: 3}
-  - {fileID: 492749157861349501, guid: 63a912d928e2be546ab76fb88ba07d1f, type: 3}
+  - {fileID: 6101860083479334024, guid: b8bf14b1cb95b6441994a040582bf6fb, type: 3}
+  - {fileID: 3684971878102696900, guid: 850296ebbf399b441b04ad48ba465a6e, type: 3}
+  - {fileID: 492749157861349501, guid: 9d117fb706a8e7b44823a453f7ef6d97, type: 3}
   _notFlippableRoadSectionChoices:
-  - {fileID: 3684971878102696900, guid: cb7c62e75e7b5b649b0cf28e7ad427d2, type: 3}
-  - {fileID: -6685951054425364178, guid: 2926f5046dd55ad4aac2baa09a1ccd39, type: 3}
-  - {fileID: -4809164447392098823, guid: 9ba5bcd0ecf97b54da324c7be495d0e1, type: 3}
-  - {fileID: 3684971878102696900, guid: c502745a693a9f742891fcbd4fbb5257, type: 3}
-  - {fileID: 5432828085764799425, guid: 5b852c450d8acb04bae390f7d83b8a21, type: 3}
-  - {fileID: 3684971878102696900, guid: 9c4be83b7476eb547897dad9a007ec65, type: 3}
+  - {fileID: 3684971878102696900, guid: 92b0fbb6b9e02b949af4953915b1bfc4, type: 3}
+  - {fileID: -4809164447392098823, guid: c33d199490b400e4a9d13cfbcad67bd9, type: 3}
+  - {fileID: 3684971878102696900, guid: e1d03931feeab96459935badfcb173f9, type: 3}
+  - {fileID: 5432828085764799425, guid: 18d2466527545004aa95680ff1352e54, type: 3}
+  - {fileID: 3684971878102696900, guid: 1a590221d2b1d1a43a39d9ec2638339d, type: 3}
+  _DeadEndRoadSection: {fileID: -6685951054425364178, guid: e28739412b5a6794ca849425c803e6b8, type: 3}
   _roadSectionContainer: {fileID: 0}
-  _autoHorizontalFlipPieces: 0
+  _autoHorizontalFlipPieces: 1
   placeAllPresetPiecesOnStart: 1
   piecesToPlaceFirst: []
   _targetRoadLength: 10

@@ -62,9 +62,8 @@ public class ArcadeBicycle : MonoBehaviour
         currentVelocity = Mathf.Clamp(currentVelocity * 0.8f + currentAccel * maxSpeed * Time.fixedDeltaTime, -maxSpeed, maxSpeed);
 
         // Add force to move forward
-        transform.position = rb.position;
+        rb.MovePosition(transform.position + transform.forward * currentVelocity);
         bicycleVisuals.transform.position = rb.position;
-        transform.position += transform.forward * currentVelocity;
 
         currentWheelAngle = Mathf.Clamp(
              currentWheelAngle * 0.8f + maxWheelTurningAngle * horizontalInput * Time.fixedDeltaTime * wheelTurningSpeed,
@@ -86,7 +85,7 @@ public class ArcadeBicycle : MonoBehaviour
                 currentWheelAngle*currentAccel, 
                 0
             ) * Time.fixedDeltaTime
-        );
+         );
     }
 
     private void OnCollisionEnter(Collision collision)

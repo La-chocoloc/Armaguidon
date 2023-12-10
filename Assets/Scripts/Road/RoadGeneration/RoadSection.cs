@@ -20,6 +20,11 @@ namespace JonathonOH.RoadGeneration
         [SerializeField][ReadOnly] public int PieceTypeId;
         [SerializeField][ReadOnly] public bool IsFlipped;
 
+        protected bool hasCreatedRoad = false;
+        protected GameObject playerGameObject = null;
+
+        public float distanceToPlayer;
+
         public static List<Type> possibleNeighbours;
 
         protected RoadSectionShape _shapeRelativeToStart
@@ -38,7 +43,7 @@ namespace JonathonOH.RoadGeneration
 
         private void OnDrawGizmos()
         {
-            if (_localShapeReal != null) _shapeRelativeToStart.DebugDraw();
+            //if (_localShapeReal != null) _shapeRelativeToStart.DebugDraw();
             _DrawEndPoints();
         }
 
@@ -58,16 +63,20 @@ namespace JonathonOH.RoadGeneration
 
         protected void Start()
         {
-            Camera.main.transform.position = new Vector3(
-                _startPoint.position.x,
-                Camera.main.transform.position.y,
-                _startPoint.position.z
-            );
+            playerGameObject = GameObject.FindGameObjectWithTag("Player");
+            topology = _localShapeReal?._topologyGlobal.GetVertices();
         }
 
         void Update()
         {
-            topology = _localShapeReal?._topologyGlobal.GetVertices();
+            if (playerGameObject == null) { playerGameObject = GameObject.FindGameObjectWithTag("Player"); }
+            if(hasCreatedRoad) { return; }
+            distanceToPlayer = (playerGameObject.transform.position - transform.position).magnitude;
+            if (distanceToPlayer < 80)
+            {
+                Debug.Log($"Player is near {this.GetType()}");
+                CreateNextRoad();
+            }
         }
 
         private void _DrawEndPoints()
@@ -144,9 +153,11 @@ namespace JonathonOH.RoadGeneration
         //    ARoadGenerator.Instance.PlaceNextRoads(this);
         //}
 
-        public void createNextRoad()
+        public void CreateNextRoad()
         {
             Debug.Log($"Searching follow up for {this.GetType()}");
+            if(hasCreatedRoad) { return; }
+            hasCreatedRoad = true;
             ARoadGenerator.Instance.PlaceNextRoads(this);
         }
 

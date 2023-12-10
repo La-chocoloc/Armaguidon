@@ -16,6 +16,8 @@ namespace JonathonOH.RoadGeneration
         protected new void Start()
         {
             base.Start();
+            Debug.Log("Je suis une intersection");
+            CreateNextRoad();
         }
 
         public override List<Type> GetPossibleNeighbours()

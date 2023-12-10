@@ -22,7 +22,7 @@ public class bikeDetector : MonoBehaviour
             Debug.Log(other.name);
             if(other.name == "ArcadeBicycle")
             {
-                roadSection.createNextRoad();
+                roadSection.CreateNextRoad();
             }
         }
     }

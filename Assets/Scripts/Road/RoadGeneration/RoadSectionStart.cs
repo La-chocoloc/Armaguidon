@@ -8,8 +8,8 @@ namespace JonathonOH.RoadGeneration
 {
     public class RoadSectionStart : RoadSectionOneWay
     {
-        public static new List<Type> possibleNeighbours = new List<Type>() { 
-            typeof(RoadSectionOneWay), 
+        public static new List<Type> possibleNeighbours = new List<Type>() {
+            // typeof(RoadSectionOneWay),
             typeof(RoadSectionIntersection) ,
             typeof(RoadSectionOneWayTurn)
         };
