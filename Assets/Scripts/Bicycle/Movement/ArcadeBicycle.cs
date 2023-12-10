@@ -27,6 +27,7 @@ public class ArcadeBicycle : MonoBehaviour
     float currentWheelAngle = 0;
     float currentBicycleAngle = 0;
 
+    bool boosted = false;
     bool dead = false;
 
     // Start is called before the first frame update
@@ -59,7 +60,11 @@ public class ArcadeBicycle : MonoBehaviour
         );
 
         // Use of deltaTime so bicycle's velocity changes are smooth
-        currentVelocity = Mathf.Clamp(currentVelocity * 0.8f + currentAccel * maxSpeed * Time.fixedDeltaTime, -maxSpeed, maxSpeed);
+        currentVelocity = Mathf.Clamp(
+            currentVelocity * 0.8f + currentAccel * maxSpeed * Time.fixedDeltaTime, 
+            -maxSpeed, 
+            maxSpeed
+        );
 
         // Add force to move forward
         rb.MovePosition(transform.position + transform.forward * currentVelocity);
@@ -79,6 +84,9 @@ public class ArcadeBicycle : MonoBehaviour
 
         bicycleVisuals.transform.localRotation = Quaternion.Euler(0, 0, -currentBicycleAngle);
         handleBar.transform.localRotation = Quaternion.Euler(0,currentWheelAngle,0);
+
+
+
         transform.rotation = Quaternion.Euler(
             transform.rotation.eulerAngles + new Vector3(
                 0,
@@ -90,10 +98,21 @@ public class ArcadeBicycle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ennemy")
+        if (collision.gameObject.tag == "Ennemy")
         {
             Debug.Log("Should explode");
             Explode();
+        }
+        if (collision.gameObject.tag == "Boost")
+        {
+            setBoost(true);
+        }
+        if (collision.gameObject.tag == "Terrain")
+        {
+            if (boosted)
+            {
+                setBoost(false);
+            }
         }
     }
 
@@ -116,6 +135,19 @@ public class ArcadeBicycle : MonoBehaviour
             childRb.useGravity = true;
             childRb.isKinematic = false;
             childRb.AddForce(new Vector3(randX, randY, randZ).normalized * 1000f);
+        }
+    }
+
+    void setBoost(bool isBoosted)
+    {
+        boosted = isBoosted;
+        if(isBoosted)
+        {
+            maxSpeed *= 2.5f;
+        }
+        else
+        {
+            maxSpeed *= 0.4f;
         }
     }
 }
